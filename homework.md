@@ -1,0 +1,3 @@
+-install git 
+- add git remote
+- 
