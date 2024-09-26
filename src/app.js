@@ -1,19 +1,19 @@
 const express=require('express')
 const app=express()
 
-
-
-app.get("/user/:id",(req,res)=>{
-    console.log(req.params)
-    res.send({fistname:"nani",age:23})
-}),
-app.post("/user",(req,res)=>{
-    console.log(req.query)
-    res.send("http post method is succefull")
-})
-app.delete("/user",(req,res)=>{
-    res.send("delete  method is succesfull")
-})
+app.use("/user",(req,res,next)=>{
+    console.log("this is first respones");
+    // res.send("responecs1")
+    next()
+},[(req,res,next)=>{
+    next()
+    console.log("2ed responece")
+    res.send("responece2")
+},(req,res,next)=>{
+    console.log("this is 3 ed one")
+    next()
+   
+}])
 app.listen(4444,()=>{
     console.log("your server runingg on 4444")
 })
